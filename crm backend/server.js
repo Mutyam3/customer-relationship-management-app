@@ -97,7 +97,7 @@ app.post("/signup",async(req,res)=>{
         res.json({msg:"signupsuccess"})
      } 
      catch (error) {
-        res.json({msg:"signup failed"})
+        res.json({msg:"signupfailed"})
      }
 })
 
@@ -108,7 +108,7 @@ app.post("/login",async(req,res)=>{
         res.json({msg:"loginsuccess",token,role:user.role})
     } 
     catch (error) {
-        res.json({msg:"login failed"})
+        res.json({msg:"loginfailed"})
     }
 })
 
