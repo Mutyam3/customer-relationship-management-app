@@ -39,10 +39,23 @@ export const leadsApi = createApi({
             })
             
 
+         }),
+
+         addLead : builder.mutation({
+                query : ()=>({
+                     url : '/addlead',
+                     headers :{
+
+                      "authorization" : window.localStorage.getItem("token")
+
+                    },
+                     method : 'POST',
+                     body : lead
+                })
          })
       })
       
 })
 
 
-export const { useLoginMutation, useSignupMutation, useGetLeadsQuery } = leadsApi
+export const { useLoginMutation, useSignupMutation, useGetLeadsQuery, useAddLeadMutation } = leadsApi
