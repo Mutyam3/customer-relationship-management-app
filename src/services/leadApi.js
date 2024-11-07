@@ -42,7 +42,7 @@ export const leadsApi = createApi({
          }),
 
          addLead : builder.mutation({
-                query : ()=>({
+                query : (lead)=>({
                      url : '/addlead',
                      headers :{
 
