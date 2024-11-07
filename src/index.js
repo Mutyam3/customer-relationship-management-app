@@ -10,6 +10,11 @@ import SignUp from './features/signup/Signup';
 import { store } from './app/store';
 import {Provider} from 'react-redux'
 import Dashboard from './features/dashboard/Dashboard';
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap/dist/js/bootstrap'
+import LeadMaster from './features/dashboard/LeadMaster';
+import NewLead from './features/dashboard/NewLead';
+
 
 const myRouter = createBrowserRouter([
   {
@@ -30,7 +35,15 @@ const myRouter = createBrowserRouter([
       },
       {
         path : '/dashboard',
-        element : <Dashboard/>
+        element : <Dashboard/>,
+        children : [{
+                        path : '/dashboard',
+                        element : <LeadMaster/>
+                    },
+                    {
+                        path : '/dashboard/newlead',
+                        element : <NewLead></NewLead>
+                    }]
       }
     ]
   },
