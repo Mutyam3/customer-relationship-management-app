@@ -14,6 +14,8 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap/dist/js/bootstrap'
 import LeadMaster from './features/dashboard/LeadMaster';
 import NewLead from './features/dashboard/NewLead';
+import LeadData from './features/dashboard/LeadData';
+import AddLeadRemarks from './features/dashboard/AddLeadRemarks';
 
 
 const myRouter = createBrowserRouter([
@@ -43,7 +45,16 @@ const myRouter = createBrowserRouter([
                     {
                         path : '/dashboard/newlead',
                         element : <NewLead></NewLead>
-                    }]
+                    },
+                    { 
+                      path : '/dashboard/leaddata/:id',
+                      element : <LeadData></LeadData>
+
+                   },
+                  {
+                    path : '/dashboard/addleadremarks/:id',
+                    element : <AddLeadRemarks/>
+                  }]
       }
     ]
   },

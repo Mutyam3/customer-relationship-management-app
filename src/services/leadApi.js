@@ -7,6 +7,7 @@ export const leadsApi = createApi({
         baseUrl : 'http://localhost:7777'
       }),
       endpoints : (builder)=>({
+
          login : builder.mutation({
           query : (user) =>({
 
@@ -28,21 +29,31 @@ export const leadsApi = createApi({
 
          getLeads : builder.query({
             query : ()=>({
-                query:()=>({
+                
                     url : "",
                     headers :{
 
                         "authorization" : window.localStorage.getItem("token")
 
                     }
-                })
+                
             })
             
 
          }),
 
+         getLeadById : builder.query({
+               query : (id)=>({
+                   url : `leaddetails/${id}`,
+                   headers : {
+                     "authorization" : window.localStorage.getItem("token")
+                   }
+               })
+          })
+       ,
+
          addLead : builder.mutation({
-                query : ()=>({
+                query : (lead)=>({
                      url : '/addlead',
                      headers :{
 
@@ -52,10 +63,25 @@ export const leadsApi = createApi({
                      method : 'POST',
                      body : lead
                 })
+         }),
+
+         addLeadRemarksById : builder.mutation({
+                  query : ({remarks,id})=>({
+                       url : `/addremark/${id}`,
+                       headers : {
+                        "authorization" : window.localStorage.getItem("token")
+
+                       },
+                       method : 'PUT',
+                       body : remarks
+                  })
          })
+
       })
+
+    })
       
-})
 
 
-export const { useLoginMutation, useSignupMutation, useGetLeadsQuery, useAddLeadMutation } = leadsApi
+
+export const { useLoginMutation, useSignupMutation, useGetLeadsQuery, useAddLeadMutation, useGetLeadByIdQuery, useAddLeadRemarksByIdMutation } = leadsApi
