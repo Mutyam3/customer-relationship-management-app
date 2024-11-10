@@ -112,6 +112,22 @@ app.post("/login",async(req,res)=>{
     }
 })
 
+app.get("/leaddetails/:id", async(req, res)=>{
+             try {
+                var leaddata = await Lead.findOne({_id:req.params.id})
+                if(leaddata)
+                {
+                    res.json(leaddata)
+                
+                }
+                
+             
+             }
+             catch(error){
+                res.json({msg: 'err in finding lead details'})
+             }
+})
+
 
 app.listen(7777,()=>{
     console.log("server is running on port 7777")
